@@ -16,7 +16,7 @@ on:
         default: 'latest'
 
 jobs:
-  deploy_prod:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -25,10 +25,8 @@ jobs:
         with:
           node-version: 15.x
       - run: npm i -g cloudron
-      - run: APP_COUNT=$(cloudron list --server ${{ env.CLOUDRON_SERVER }} --token ${{ secrets.CLOUDRON_TOKEN }} | grep ${{ env.APP_DOMAIN }} | wc -l)
-      - run: APP_COUNT="here's appcount"
-      - run: echo "AC $APP_COUNT"
-      - run: echo "{APP_ALREADY_INSTALLED}={$APP_COUNT}" >> $GITHUB_ENV
+      - run: APP_COUNT=$(cloudron list --server ${{ env.CLOUDRON_SERVER }} --token ${{ secrets.CLOUDRON_TOKEN }} | grep ${{ env.APP_DOMAIN }} | wc -l) && echo "{APP_ALREADY_INSTALLED}={$APP_COUNT}" >> $GITHUB_ENV
+#      - run: echo "{APP_ALREADY_INSTALLED}={$APP_COUNT}" >> $GITHUB_ENV
       - run: echo "ARS ${{ env.APP_ALREADY_INSTALLED }}"
       - name: "Install App"
         if: "contains(env.APP_ALREADY_INSTALLED, '0')"
