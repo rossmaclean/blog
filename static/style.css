@@ -13,10 +13,6 @@ img {
 	max-width: 100% ;
 }
 
-a {
-	color: mediumpurple;
-}
-
 header h1 {
 	text-align: center ;
 }
@@ -46,8 +42,4 @@ footer {
 }
 #nextart,#prevart {
 	max-width: 33% ;
-}
-
-a {
-	color: mediumpurple;
 }
