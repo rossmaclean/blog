@@ -3,7 +3,7 @@
   "healthCheckPath": "/",
   "httpPort": 8000,
   "addons": {
-    "localStorage": {}
+    "localstorage": {}
   },
   "manifestVersion": 2
 }
