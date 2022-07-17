@@ -11,6 +11,7 @@ RUN rm -rf /var/log/nginx && mkdir /run/nginx && ln -s /run/nginx /var/log/nginx
 COPY --from=build /app/code/public/** /app/code/public/
 
 COPY start.sh /app/pkg/
+COPY nginx.conf /app/code/
 
 CMD [ "/app/pkg/start.sh" ]
 
