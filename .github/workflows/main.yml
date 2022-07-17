@@ -1,0 +1,35 @@
+name: Main CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Define version'
+        required: true
+        default: ${GITHUB_SHA}
+
+
+jobs:
+  build_push_image:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: docker login --username rossmaclean --password ${{ secrets.DOCKERHUB_TOKEN }}
+      - run: docker build -t rossmaclean/blog:${{ github.event.inputs.version }} .
+      - run: docker push rossmaclean/blog:${{ github.event.inputs.version }}
+
+  deploy:
+    needs: build_push_image
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js 15.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 15.x
+      - run: npm i -g cloudron
+      - run: cloudron update --server my.rossmac.co.uk --token ${{ secrets.CLOUDRON_TOKEN }} --app blog.rossmac.co.uk --image rossmaclean/blog:${{ github.event.inputs.version }}

@@ -1,0 +1,4 @@
+baseURL = 'https://blog.rossmac.co.uk'
+languageCode = 'en-us'
+title = 'Ross MacLean - Blog'
+theme = 'lugo'
