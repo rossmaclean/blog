@@ -1,26 +1,26 @@
 name: Main CI
 
+env:
+  DOCKER_USER: rossmaclean
+  PROJECT_NAME: blog
+  CLOUDRON_SERVER: my.rossmac.co.uk
+  APP_DOMAIN: blog.rossmac.co.uk
+
 on:
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
   workflow_dispatch:
-    inputs:
-      version:
-        description: 'Define version'
-        required: true
-        default: ${GITHUB_SHA}
-
 
 jobs:
   build_push_image:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: docker login --username rossmaclean --password ${{ secrets.DOCKERHUB_TOKEN }}
-      - run: docker build -t rossmaclean/blog:${{ github.event.inputs.version }} .
-      - run: docker push rossmaclean/blog:${{ github.event.inputs.version }}
+      - run: docker login --username $DOCKER_USER --password ${{ secrets.DOCKERHUB_TOKEN }}
+      - run: docker build -t $DOCKER_USER/$PROJECT_NAME:${GITHUB_SHA::6}
+      - run: docker push $DOCKER_USER/$PROJECT_NAME:${GITHUB_SHA::6}
 
   deploy:
     needs: build_push_image
@@ -32,4 +32,4 @@ jobs:
         with:
           node-version: 15.x
       - run: npm i -g cloudron
-      - run: cloudron update --server my.rossmac.co.uk --token ${{ secrets.CLOUDRON_TOKEN }} --app blog.rossmac.co.uk --image rossmaclean/blog:${{ github.event.inputs.version }}
+      - run: cloudron update --server $CLOUDRON_SERVER --token ${{ secrets.CLOUDRON_TOKEN }} --app $APP_DOMAIN --image $DOCKER_USER/$PROJECT_NAME:${GITHUB_SHA::6}
