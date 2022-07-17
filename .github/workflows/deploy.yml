@@ -25,7 +25,7 @@ jobs:
         with:
           node-version: 15.x
       - run: npm i -g cloudron
-      - run: APP_COUNT=$(cloudron list --server ${{ env.CLOUDRON_SERVER }} --token ${{ secrets.CLOUDRON_TOKEN }} | grep ${{ env.APP_DOMAIN }} | wc -l) && echo "{APP_ALREADY_INSTALLED}={$APP_COUNT}" >> $GITHUB_ENV
+      - run: APP_COUNT=$(cloudron list --server ${{ env.CLOUDRON_SERVER }} --token ${{ secrets.CLOUDRON_TOKEN }} | grep ${{ env.APP_DOMAIN }} | wc -l) && echo "APP_ALREADY_INSTALLED=$APP_COUNT" >> $GITHUB_ENV && cat $GITHUB_ENV
 #      - run: echo "{APP_ALREADY_INSTALLED}={$APP_COUNT}" >> $GITHUB_ENV
       - run: echo "ARS ${{ env.APP_ALREADY_INSTALLED }}"
       - name: "Install App"
