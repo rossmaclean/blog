@@ -6,7 +6,7 @@ RUN hugo
 
 FROM cloudron/base:3.2.0@sha256:ba1d566164a67c266782545ea9809dc611c4152e27686fd14060332dd88263ea
 
-RUN rm -rf /var/log/nginx && mkdir /run/nginx && ln -s /run/nginx/log /var/log/nginx && ln -s /tmp /var/cache/nginx
+RUN rm -rf /var/log/nginx && mkdir /run/nginx && ln -s /run/nginx /var/log/nginx
 
 COPY --from=build /app/code/public/** /app/code/public/
 
