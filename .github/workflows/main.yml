@@ -1,10 +1,13 @@
 name: Main CI
 
 env:
-  DOCKER_USER: rossmaclean
-  PROJECT_NAME: blog
-  CLOUDRON_SERVER: my.rossmac.co.uk
-  APP_DOMAIN: blog.rossmac.co.uk
+  DOCKER_USER: "rossmaclean"
+  APP_NAME: "blog"
+  CLOUDRON_SERVER: "my.rossmac.co.uk"
+  APP_DOMAIN: "blog.rossmac.co.uk"
+  DOCKERHUB_TOKEM: ${{ secrets.DOCKERHUB_TOKEN }}
+  CLOUDRON_TOKEN: ${{ secrets.CLOUDRON_TOKEN }}
+  VERSION: ${GITHUB_SHA::7}
 
 on:
   push:
@@ -18,15 +21,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Docker Cloudron
-        uses: rossmaclean/docker-cloudron-action@v0.0.12
+      - name: Docker Build Push
+        uses: rossmaclean/docker-build-push-action@v0.0.14
         with:
           docker-user: "rossmaclean"
           app-name: "blog"
-          cloudron-server: "my.rossmac.co.uk"
-          app-domain: "blog.rossmac.co.uk"
           dockerhub-token: ${{ secrets.DOCKERHUB_TOKEN }}
-          cloudron-token: ${{ secrets.CLOUDRON_TOKEN }}
           version: ${GITHUB_SHA::7}
 
   deploy:
