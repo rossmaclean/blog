@@ -24,10 +24,10 @@ jobs:
       - name: Docker Build Push
         uses: rossmaclean/docker-build-push-action@v0.0.14
         with:
-          docker-user: "rossmaclean"
-          app-name: "blog"
+          docker-user: ${{ env.DOCKER_USER }}
+          image-name: ${{ env.DOCKER_USER }}/${{ env.APP_NAME }}:${{ env.VERSION }}
           dockerhub-token: ${{ secrets.DOCKERHUB_TOKEN }}
-          version: ${GITHUB_SHA::7}
+          version: ${{ env.VERSION }}
 
   deploy:
     needs: build_push_image
