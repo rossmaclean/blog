@@ -18,10 +18,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: echo "Version ${GITHUB_SHA::7}"
-      - run: docker login --username ${{ env.DOCKER_USER }} --password ${{ secrets.DOCKERHUB_TOKEN }}
-      - run: docker build -t ${{ env.DOCKER_USER }}/${{ env.PROJECT_NAME }}:${GITHUB_SHA::7} -t ${{ env.DOCKER_USER }}/${{ env.PROJECT_NAME }}:latest .
-      - run: docker push ${{ env.DOCKER_USER }}/${{ env.PROJECT_NAME }}:${GITHUB_SHA::7}
+      - name: Docker Cloudron
+        uses: rossmaclean/docker-cloudron-action@v0.0.8
+        with:
+          docker-user: "rossmaclean"
+          app-name: "blog"
+          cloudron-server: "my.rossmac.co.uk"
+          app-domain: "blog.rossmac.co.uk"
+          dockerhub-token: ${{ secrets.DOCKERHUB_TOKEN }}
+          cloudron-token: ${{ secrets.CLOUDRON_TOKEN }}
+          version: ${GITHUB_SHA::7}
 
   deploy:
     needs: build_push_image
