@@ -19,7 +19,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Docker Cloudron
-        uses: rossmaclean/docker-cloudron-action@v0.0.11
+        uses: rossmaclean/docker-cloudron-action@v0.0.12
         with:
           docker-user: "rossmaclean"
           app-name: "blog"
