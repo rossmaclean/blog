@@ -34,10 +34,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Cloudron Deploy
-        uses: rossmaclean/cloudron-deploy-action@v0.0.6
+        uses: rossmaclean/cloudron-deploy-action@v0.0.7
         with:
           image: ${{ env.DOCKER_USER }}/${{ env.APP_NAME }}:${{ env.VERSION}}
           app-domain: ${{ env.APP_DOMAIN }}
           cloudron-server: ${{ env.CLOUDRON_SERVER }}
           cloudron-token: ${{ env.CLOUDRON_TOKEN }}
-          install-if-missing: "true"
+          install-if-missing: "false"
