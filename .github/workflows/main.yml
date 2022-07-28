@@ -7,7 +7,7 @@ env:
   APP_DOMAIN: "blog.rossmac.co.uk"
   DOCKERHUB_TOKEM: ${{ secrets.DOCKERHUB_TOKEN }}
   CLOUDRON_TOKEN: ${{ secrets.CLOUDRON_TOKEN }}
-  VERSION: ${GITHUB_SHA::7}
+  VERSION: ${{GITHUB_SHA::7}}
 
 on:
   push:
