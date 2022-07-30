@@ -22,7 +22,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Docker Build Push
-        uses: rossmaclean/docker-build-push-action@v0.0.14
+        uses: rossmaclean/docker-build-push-action@v0.0.15
         with:
           docker-user: ${{ env.DOCKER_USER }}
           image-name: ${{ env.APP_NAME }}
@@ -34,7 +34,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Cloudron Deploy
-        uses: rossmaclean/cloudron-deploy-action@v0.0.8
+        uses: rossmaclean/cloudron-deploy-action@v0.0.9
         with:
           image: ${{ env.DOCKER_USER }}/${{ env.APP_NAME }}:${{ env.VERSION }}
           app-domain: ${{ env.APP_DOMAIN }}
