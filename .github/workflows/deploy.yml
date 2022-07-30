@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Cloudron Deploy
-        uses: rossmaclean/cloudron-deploy-action@v0.0.14
+        uses: rossmaclean/cloudron-deploy-action@v0.0.15
         with:
           image: ${{ env.DOCKER_USER }}/${{ env.APP_NAME }}:${{ github.event.inputs.version }}
           app-domain: ${{ env.APP_DOMAIN }}
@@ -28,4 +28,4 @@ jobs:
           cloudron-token: ${{ env.CLOUDRON_TOKEN }}
           install-if-missing: "true"
           skip-backup: "true"
-          environment: "VAR1=Var1Value;VAR2=Var2Value"
+          environment: "VAR1=Var1Value VAR2=Var2Value"
