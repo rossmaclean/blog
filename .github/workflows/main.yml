@@ -41,3 +41,4 @@ jobs:
           cloudron-server: ${{ env.CLOUDRON_SERVER }}
           cloudron-token: ${{ env.CLOUDRON_TOKEN }}
           install-if-missing: "false"
+          skip-backup: "true"
