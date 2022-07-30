@@ -6,6 +6,7 @@ env:
   CLOUDRON_SERVER: "my.rossmac.co.uk"
   APP_DOMAIN: "blog.rossmac.co.uk"
   CLOUDRON_TOKEN: ${{ secrets.CLOUDRON_TOKEN }}
+  ENVIRONMENT: ${{ secrets.ENVIRONMENT }}
 
 on:
   workflow_dispatch:
@@ -20,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Cloudron Deploy
-        uses: rossmaclean/cloudron-deploy-action@v0.0.16
+        uses: rossmaclean/cloudron-deploy-action@v0.0.17
         with:
           image: ${{ env.DOCKER_USER }}/${{ env.APP_NAME }}:${{ github.event.inputs.version }}
           app-domain: ${{ env.APP_DOMAIN }}
@@ -28,4 +29,4 @@ jobs:
           cloudron-token: ${{ env.CLOUDRON_TOKEN }}
           install-if-missing: "true"
           skip-backup: "true"
-          environment: "VAR1=Var1Value VAR2=Var2Value"
+          environment: ${{ env.ENVIRONMENT }}
