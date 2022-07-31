@@ -20,4 +20,11 @@ def build_and_push(docker_registry_username, docker_registry_token, docker_regis
         ]
       }
     ]
+    "trigger": [
+      "event": [
+        "push",
+        "pull_request",
+        "custom"
+      ]
+    ]
   }
