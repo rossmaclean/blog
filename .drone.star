@@ -17,7 +17,7 @@ def build_and_push(docker_registry_username, docker_registry_token, docker_regis
             "repo": "gitea.rossmac.co.uk/rossmaclean/blog",
             "tags": "latest",
             "registry": "%s" % docker_registry
-        }
+        },
         "commands": [
           "echo build %s" % ctx.build
         ]
