@@ -13,3 +13,29 @@ steps:
         from_secret: docker_password
       repo: rossmaclean/blog
       tags: latest
+
+trigger:
+  event:
+    - push
+    - pull_request
+
+---
+kind: pipeline
+type: docker
+name: default
+
+steps:
+  - name: deploy
+    image: node
+    environment:
+      CLOUDRON_TOKEN:
+        from_secret: cloudron_token
+    commands:
+      - npm i -g cloudron
+      - cloudron install --server my.rossmac.co.uk --token $CLOUDRON_TOKEN --location blog.rossmac.co.uk --image rossmaclean/blog:latest
+
+trigger:
+  event:
+    - promote
+  target:
+    - production
