@@ -25,6 +25,7 @@ steps:
     image: node
     commands:
       - echo $DRONE_COMMIT_SHA
+      - echo ${DRONE_COMMIT_SHA::7}
       - echo ${DRONE_COMMIT_SHA:(-3)}
 
 trigger:
