@@ -14,8 +14,11 @@ steps:
       repo: gitea.rossmac.co.uk/rossmaclean/blog
       tags: latest
       registry: gitea.rossmac.co.uk
+    environment:
+      VERSION: ${DRONE_COMMIT_SHA::7}
     commands:
-      - echo "Version ${DRONE_COMMIT_SHA}"
+      - echo "Version $VERSION"
+      - echo "Version ${VERSION}"
 
 trigger:
   event:
