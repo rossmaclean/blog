@@ -4,7 +4,7 @@ type: docker
 name: build_push
 
 steps:
-  - name: docker
+  - name: build and push
     image: plugins/docker
     settings:
       username:
@@ -19,6 +19,7 @@ trigger:
   event:
     - push
     - pull_request
+    - custom
 
 ---
 kind: pipeline
