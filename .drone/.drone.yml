@@ -15,7 +15,7 @@ steps:
       tags: latest
       registry: gitea.rossmac.co.uk
     commands:
-      - echo "PARAM: ${PARAM}"
+      - echo "PARAM ${PARAM}"
 
 trigger:
   event:
