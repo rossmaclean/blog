@@ -32,7 +32,7 @@ steps:
         from_secret: cloudron_token
     commands:
       - npm i -g cloudron
-      - cloudron install --server my.rossmac.co.uk --token $CLOUDRON_TOKEN --location blog.rossmac.co.uk --image rossmaclean/blog:latest
+      - cloudron update --no-backup --server my.rossmac.co.uk --token $CLOUDRON_TOKEN --app blog.rossmac.co.uk --image rossmaclean/blog:latest
 
 trigger:
   event:
