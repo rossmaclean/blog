@@ -3,20 +3,27 @@ kind: pipeline
 type: docker
 name: build_push
 
+environment:
+  DOCKER_REGISTRY_USERNAME: "rossmaclean"
+  APP_NAME: "blog"
+  CLOUDRON_SERVER: "my.rossmac.co.uk"
+  APP_DOMAIN: "blog.rossmac.co.uk"
+  DOCOKER_REGISTRY: "gitea.rossmac.co.uk"
+  DOCKER_REGISTRY_TOKEN:
+    from_secret: "docker_registry_token"
+  CLOUDRON_TOKEN:
+    from_secret: "cloudron_token"
+  VERSION: "latest"
+
 steps:
-  - name: build and push
+  - name: "build and push"
     image: plugins/docker
     settings:
-      username:
-        from_secret: docker_registry_username
-      password:
-        from_secret: docker_registry_password
-      repo: gitea.rossmac.co.uk/rossmaclean/blog
-      tags: latest
-      registry: gitea.rossmac.co.uk
-    commands:
-      - export VERSION=${DRONE_COMMIT_SHA::7}
-      - echo "Version ${VERSION}"
+      username: "$DOCKER_REGISTRY_USERNAME"
+      password: "$DOCKER_REGISTRY_PASSWORD"
+      repo: "$DOCKER_REGISTRY/$DOCKER_REGISTRY_USER/$APP_NAME"
+      tags: "latest"
+      registry: "$DOCKER_REGISTRY"
 
 trigger:
   event:

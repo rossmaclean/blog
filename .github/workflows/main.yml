@@ -5,7 +5,7 @@ env:
   APP_NAME: "blog"
   CLOUDRON_SERVER: "my.rossmac.co.uk"
   APP_DOMAIN: "blog.rossmac.co.uk"
-  DOCKERHUB_TOKEM: ${{ secrets.DOCKERHUB_TOKEN }}
+  DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
   CLOUDRON_TOKEN: ${{ secrets.CLOUDRON_TOKEN }}
   VERSION: "${GITHUB_SHA::7}"
 
