@@ -1,16 +1,22 @@
 def main(ctx):
+  return build_and_push("username", "token", "registry", "app")
+
+
+def build_and_push(docker_registry_username, docker_registry_token, docker_registry, app_name):
   return {
     "kind": "pipeline",
-    "name": "build",
+    "type": "docker",
+    "name": "build and push",
     "steps": [
       {
         "name": "build",
-        "image": "alpine",
-        "commands": [
-            "echo hello world",
-            "echo Params: %s" % ctx.build.params,
-            "echo Commit: %s" % ctx.build.commit,
-            "echo Version: %s" % ctx.build.commit[:7]
+        "image": "plugins/docker",
+        "settings": [
+            "username": "%s" % docker_registry_username,
+            "password": "%s" % docker_registry_token,
+            "repo": "%s/%s/%s" % docker_registry docker_registry_username app_name,
+            "tags": "latest",
+            "registry": "%s" % docker_registry
         ]
       }
     ]
