@@ -1,7 +1,7 @@
 ---
 kind: pipeline
 type: docker
-name: default
+name: build_push
 
 steps:
   - name: docker
@@ -22,7 +22,7 @@ trigger:
 ---
 kind: pipeline
 type: docker
-name: default
+name: deploy
 
 steps:
   - name: deploy
