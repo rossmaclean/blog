@@ -1,5 +1,5 @@
 def main(ctx):
-  return build_and_push("username", "token", "registry", "app")
+  return build_and_push("rossmaclean", "token", "registry", "app")
 
 
 def build_and_push(docker_registry_username, docker_registry_token, docker_registry, app_name):
@@ -12,7 +12,7 @@ def build_and_push(docker_registry_username, docker_registry_token, docker_regis
         "name": "build",
         "image": "plugins/docker",
         "settings": {
-            "username": "username",
+            "username": "%s" % docker_registry_username,
             "password": "token",
             "repo": "gitea.rossmac.co.uk/rossmaclean/blog",
             "tags": "latest",
