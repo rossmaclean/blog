@@ -4,7 +4,12 @@ type: docker
 name: default
 
 steps:
-  - name: greeting
-    image: golang:1.12
-    commands:
-      - echo "Hey!"
+  - name: docker
+    image: plugins/docker
+    settings:
+      username:
+        from_secret: rossmaclean
+      password:
+        from_secret: docker_password
+      repo: rossmaclean/blog
+      tags: latest
