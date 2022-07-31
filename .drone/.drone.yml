@@ -14,8 +14,6 @@ steps:
       repo: gitea.rossmac.co.uk/rossmaclean/blog
       tags: latest
       registry: gitea.rossmac.co.uk
-    commands:
-      - echo "PARAM $PARAM"
 
 trigger:
   event:
