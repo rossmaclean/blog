@@ -1,4 +1,5 @@
 def main(ctx):
+  print(ctx)
   return {
     "kind": "pipeline",
     "name": "build",
