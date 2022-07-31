@@ -15,7 +15,7 @@ steps:
       tags: latest
       registry: gitea.rossmac.co.uk
     commands:
-      - echo "Version ${DRONE_COMMIT_SHA::7}"
+      - echo "Version ${DRONE_COMMIT_SHA}"
 
 trigger:
   event:
