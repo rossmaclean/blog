@@ -1,4 +1,5 @@
 def main(ctx):
+  print("Context:")
   print(ctx)
   return {
     "kind": "pipeline",
