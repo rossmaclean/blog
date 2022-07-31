@@ -15,7 +15,7 @@ steps:
   - name: "build and push"
     image: plugins/docker
     settings:
-      username: "${DOCKER_REGISTRY_USERNAME}"
+      username: $DOCKER_REGISTRY_USERNAME
       password:
         from_secret: "docker_registry_token"
       repo: "${DOCKER_REGISTRY}/${DOCKER_REGISTRY_USER}/${APP_NAME}"
