@@ -8,11 +8,12 @@ steps:
     image: plugins/docker
     settings:
       username:
-        from_secret: docker_username
+        from_secret: docker_registry_username
       password:
-        from_secret: docker_password
+        from_secret: docker_registry_password
       repo: rossmaclean/blog
       tags: latest
+      registry: gitea.rossmac.co.uk
 
 trigger:
   event:
@@ -32,7 +33,7 @@ steps:
         from_secret: cloudron_token
     commands:
       - npm i -g cloudron
-      - cloudron update --no-backup --server my.rossmac.co.uk --token $CLOUDRON_TOKEN --app blog.rossmac.co.uk --image rossmaclean/blog:latest
+      - cloudron update --no-backup --server my.rossmac.co.uk --token $CLOUDRON_TOKEN --app blog.rossmac.co.uk --image gitea.rossmac.co.uk/rossmaclean/blog:latest
 
 trigger:
   event:
