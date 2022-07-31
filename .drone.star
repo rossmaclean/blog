@@ -9,7 +9,8 @@ def main(ctx):
         "commands": [
             "echo hello world",
             "echo Params: %s" % ctx.build.params,
-            "echo Commit: %s" % ctx.build.commit
+            "echo Commit: %s" % ctx.build.commit,
+            "echo Version: %s" % ctx.build.commit[:7]
         ]
       }
     ]
