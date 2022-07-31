@@ -1,13 +1,11 @@
 def main(ctx):
-  print(ctx)
   return {
     "kind": "pipeline",
-    "type": "docker",
-    "name": "hello_star",
+    "name": "build",
     "steps": [
       {
-        "name": "hello",
-        "image": "node",
+        "name": "build",
+        "image": "alpine",
         "commands": [
             "echo hello world"
         ]
