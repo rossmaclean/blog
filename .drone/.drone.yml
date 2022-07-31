@@ -20,7 +20,7 @@ steps:
         from_secret: "docker_registry_token"
       repo: "$DOCKER_REGISTRY/$DOCKER_REGISTRY_USER/$APP_NAME"
       tags: "latest"
-      registry: $DOCKER_REGISTRY
+      registry: ${DOCKER_REGISTRY}
 
 trigger:
   event:
