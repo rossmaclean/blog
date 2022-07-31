@@ -8,11 +8,7 @@ environment:
   APP_NAME: "blog"
   CLOUDRON_SERVER: "my.rossmac.co.uk"
   APP_DOMAIN: "blog.rossmac.co.uk"
-  DOCOKER_REGISTRY: "gitea.rossmac.co.uk"
-  DOCKER_REGISTRY_TOKEN:
-    from_secret: docker_registry_token
-  CLOUDRON_TOKEN:
-    from_secret: "cloudron_token"
+  DOCKER_REGISTRY: "gitea.rossmac.co.uk"
   VERSION: "latest"
 
 steps:
@@ -20,7 +16,8 @@ steps:
     image: plugins/docker
     settings:
       username: "$DOCKER_REGISTRY_USERNAME"
-      password: "$DOCKER_REGISTRY_PASSWORD"
+      password:
+        from_secret: docker_registry_token
       repo: "$DOCKER_REGISTRY/$DOCKER_REGISTRY_USER/$APP_NAME"
       tags: "latest"
       registry: "$DOCKER_REGISTRY"
@@ -41,7 +38,7 @@ steps:
     image: node
     environment:
       CLOUDRON_TOKEN:
-        from_secret: cloudron_token
+        from_secret: "cloudron_token"
     commands:
       - npm i -g cloudron
       - cloudron update --no-backup --server my.rossmac.co.uk --token $CLOUDRON_TOKEN --app blog.rossmac.co.uk --image gitea.rossmac.co.uk/rossmaclean/blog:latest
