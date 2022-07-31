@@ -4,6 +4,10 @@ type: docker
 name: build_push
 
 steps:
+  - name: Print params
+    image: node
+    commands:
+      - echo "PARAM: ${PARAM}"
   - name: build and push
     image: plugins/docker
     settings:
