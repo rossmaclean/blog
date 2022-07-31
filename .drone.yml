@@ -8,7 +8,7 @@ steps:
     image: plugins/docker
     settings:
       username:
-        from_secret: rossmaclean
+        from_secret: docker_username
       password:
         from_secret: docker_password
       repo: rossmaclean/blog
