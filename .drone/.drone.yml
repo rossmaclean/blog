@@ -10,7 +10,7 @@ environment:
   APP_DOMAIN: "blog.rossmac.co.uk"
   DOCOKER_REGISTRY: "gitea.rossmac.co.uk"
   DOCKER_REGISTRY_TOKEN:
-    from_secret: "docker_registry_token"
+    from_secret: docker_registry_token
   CLOUDRON_TOKEN:
     from_secret: "cloudron_token"
   VERSION: "latest"
