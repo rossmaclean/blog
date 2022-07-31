@@ -12,7 +12,7 @@ def build_and_push(docker_registry_username, docker_registry_token, docker_regis
         "name": "build",
         "image": "plugins/docker",
         "settings": [
-            "username": "%s" % docker_registry_username,
+            "username": "username",
             "password": "%s" % docker_registry_token,
             "repo": "%s/%s/%s" % docker_registry docker_registry_username app_name,
             "tags": "latest",
