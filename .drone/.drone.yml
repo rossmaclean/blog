@@ -18,7 +18,7 @@ steps:
       username: "$DOCKER_REGISTRY_USERNAME"
       password:
         from_secret: "docker_registry_token"
-      repo: $DOCKER_REGISTRY/$DOCKER_REGISTRY_USER/$APP_NAME
+      repo: ${DOCKER_REGISTRY}/${DOCKER_REGISTRY_USER}/${APP_NAME}
       tags: "latest"
       registry: ${DOCKER_REGISTRY}
 
