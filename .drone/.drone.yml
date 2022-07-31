@@ -11,7 +11,7 @@ steps:
         from_secret: docker_registry_username
       password:
         from_secret: docker_registry_password
-      repo: rossmaclean/blog
+      repo: gitea.rossmac.co.uk/rossmaclean/blog
       tags: latest
       registry: gitea.rossmac.co.uk
 
