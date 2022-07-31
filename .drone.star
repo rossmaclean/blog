@@ -8,7 +8,7 @@ def main(ctx):
         "image": "alpine",
         "commands": [
             "echo hello world",
-            "echo Params: %s" % ctx.build.params
+            "echo Params: %s" % ctx.build.params,
             "echo Commit: %s" % ctx.build.commit
         ]
       }
