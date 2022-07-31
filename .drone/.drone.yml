@@ -4,10 +4,6 @@ type: docker
 name: build_push
 
 steps:
-  - name: Print params
-    image: node
-    commands:
-      - echo "PARAM: ${PARAM}"
   - name: build and push
     image: plugins/docker
     settings:
@@ -18,6 +14,8 @@ steps:
       repo: gitea.rossmac.co.uk/rossmaclean/blog
       tags: latest
       registry: gitea.rossmac.co.uk
+    commands:
+      - echo "PARAM: ${PARAM}"
 
 trigger:
   event:
