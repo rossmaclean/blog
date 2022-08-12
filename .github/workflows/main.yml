@@ -34,7 +34,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Cloudron Deploy
-        uses: rossmaclean/cloudron-deploy-action@v0.0.18
+        uses: rossmaclean/cloudron-deploy-action@v0.0.19
         with:
           image: ${{ env.DOCKER_USER }}/${{ env.APP_NAME }}:${{ env.VERSION }}
           app-domain: ${{ env.APP_DOMAIN }}
