@@ -36,7 +36,8 @@ jobs:
       - name: Cloudron Deploy
         uses: rossmaclean/cloudron-deploy-action@v0.0.19
         with:
-          image: ${{ env.DOCKER_USER }}/${{ env.APP_NAME }}:${{ env.VERSION }}
+          image: rossmaclean/blog:test
+#          image: ${{ env.DOCKER_USER }}/${{ env.APP_NAME }}:${{ env.VERSION }}
           app-domain: ${{ env.APP_DOMAIN }}
           cloudron-server: ${{ env.CLOUDRON_SERVER }}
           cloudron-token: ${{ env.CLOUDRON_TOKEN }}
