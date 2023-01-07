@@ -6,7 +6,7 @@ tags: ['tech', 'other']
 ---
 
 # Home
-This is the home page
+This is the home page (updated!)
 
 - This
 - is
